@@ -3,7 +3,6 @@ package test.blackjack.game;
 import test.blackjack.game.model.*;
 
 import java.util.List;
-import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -19,7 +18,10 @@ public class Application {
     }
 
     private static Game buildGame(int numbers){
-        List<Player> players = IntStream.range(1, numbers+1).mapToObj(i-> new Player("Player "+ i)).collect(Collectors.toList());
+        Instruction instruction = Instruction.get();
+        List<Player> players = IntStream.range(1, numbers+1)
+                .mapToObj(i-> new Player("Player "+ i, instruction))
+                .collect(Collectors.toList());
         Function<Integer, Action> actionStrategyForDealer = (pts)->{
             if( (pts+4 )<21){
                 return Action.HIT;

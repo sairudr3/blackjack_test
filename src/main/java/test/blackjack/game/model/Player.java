@@ -11,12 +11,14 @@ import java.util.stream.Collectors;
 public class Player {
     private final String id;
     private State state;
+    private final Instruction instruction;
 
 
     private final List<CardPack.Card> drawnCards= new ArrayList<>();
 
-    public Player(String id) {
+    public Player(String id, Instruction instruction) {
         this.id = id;
+        this.instruction = instruction;
         this.state = State.PLAYING;
     }
 
@@ -65,7 +67,7 @@ public class Player {
 
     public Action getAction() {
         System.out.print(" Hit(H) or Stand(S) ??");
-        String input = Instruction.getInstruction();
+        String input = instruction.getNextInstruction();
         if("H".equalsIgnoreCase(input) || "hit".equalsIgnoreCase(input)){
             return Action.HIT;
         } else {

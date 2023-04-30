@@ -7,7 +7,7 @@ public class Dealer extends Player{
     private final Function<Integer, Action> actionStrategy;
 
     public Dealer(Function<Integer, Action> actionStrategy) {
-        super("Computer");
+        super("Computer", null);
         this.actionStrategy =actionStrategy;
     }
 

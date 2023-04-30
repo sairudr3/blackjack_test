@@ -50,7 +50,7 @@ public class CardPack {
 
     }
 
-    private enum Type {
+    enum Type {
         CLUB, DIAMOND, HEARTS, SPADES;
     }
 }
